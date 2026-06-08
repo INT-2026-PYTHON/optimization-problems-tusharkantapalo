@@ -63,3 +63,46 @@ Optimized:   False  # O(n)
 =================================================
 
 """
+
+#BRUTE-FORCE O(n^2) version
+def has_duplicate_brute(nums):
+    
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == nums[j]:
+                return True
+            
+    return False
+
+
+#FAST O(n) version
+def has_duplicate_fast(nums):
+    
+    seen = set()
+
+    for i in nums:
+        if i in seen:
+            return True
+        else:
+            seen.add(i)
+    else:
+        return False
+    
+
+n = int(input("Enter the number of inputs: "))
+
+nums = []
+for i in range(n):
+    nums.append(int(input("Enter: ")))
+
+print("BRUTE-FORCE O(n^2) version")
+if(has_duplicate_brute(nums)):
+    print("Every number is present two times.")
+else:
+    print("Every number is not present two times.")
+
+print("FAST O(n) version: ")
+if(has_duplicate_fast(nums)):
+    print("Every number is present two times.")
+else:
+    print("Every number is not present two times.")
