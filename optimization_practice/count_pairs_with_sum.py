@@ -91,3 +91,43 @@ the overall algorithm runs in O(n).
 =================================================
 
 """
+
+#BRUTE-FORCE O(n^2) version
+def count_pairs_brute(nums, target):
+
+   l1 = []
+
+   for i in range(len(nums)):
+      for j in range(i  + 1, len(nums)):
+         if nums[i] + nums[j] == target:
+               l1.append((nums[i], nums[j]))
+
+   return len(l1)
+
+
+def count_pairs_fast(nums, target):
+    
+    freq = {}
+    count = 0
+
+    for x in nums:
+        complement = target - x
+        if complement in freq:
+            count += freq[complement]
+        freq[x] = freq.get(x, 0) + 1
+
+    return count
+            
+
+n = int(input("Enter the number of inputs: "))
+nums = []
+for i in range(n):
+    nums.append(int(input("Enter: ")))
+
+target = int(input("Enter the target: "))
+
+print("BRUTE-FORCE O(n^2) version: ")
+print(f"The number of pairs are: {count_pairs_brute(nums, target)}")
+
+print("FAST O(n) version: ")
+print(f"The number of pairs are: {count_pairs_fast(nums, target)}")

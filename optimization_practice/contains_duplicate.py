@@ -95,7 +95,7 @@ nums = []
 for i in range(n):
     nums.append(int(input("Enter: ")))
 
-print("BRUTE-FORCE O(n^2) version")
+print("BRUTE-FORCE O(n^2) version: ")
 if(has_duplicate_brute(nums)):
     print("Every number is present two times.")
 else:
