@@ -87,3 +87,44 @@ O(1) time, giving an overall O(n) algorithm.
 =================================================
 
 """
+
+
+# BRUTE-FORCE O(n²) version
+def two_sum_brute(nums, target):
+
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return (i, j)
+
+    return -1
+
+
+# FAST O(n) version
+def two_sum_fast(nums, target):
+
+    indices = {}
+
+    for i in range(len(nums)):
+        complement = target - nums[i]
+
+        if complement in indices:
+            return (indices[complement], i)
+
+        indices[nums[i]] = i
+
+    return -1
+
+
+n = int(input("Enter the number of inputs: "))
+nums = []
+for i in range(n):
+    nums.append(int(input("Enter: ")))
+
+target = int(input("Enter the target: "))
+
+res1 = two_sum_brute(nums, target)
+res2 = two_sum_fast(nums, target)
+
+print("Brute Force version: ", res1)
+print("Fast version: ", res2)
