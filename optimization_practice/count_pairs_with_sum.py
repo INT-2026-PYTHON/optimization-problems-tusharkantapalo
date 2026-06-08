@@ -105,6 +105,7 @@ def count_pairs_brute(nums, target):
    return len(l1)
 
 
+#FAST O(n) version
 def count_pairs_fast(nums, target):
     
     freq = {}

@@ -83,3 +83,46 @@ element, giving an overall O(n) algorithm.
 =================================================
 
 """
+
+# BRUTE-FORCE O(n²) version
+def first_repeating_brute(nums):
+
+    earliest_second_index = len(nums)
+    repeating_element = -1
+
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == nums[j]:
+                if j < earliest_second_index:
+                    earliest_second_index = j
+                    repeating_element = nums[j]
+
+    return repeating_element
+
+
+# FAST O(n) version
+def first_repeating_fast(nums):
+
+    seen = set()
+
+    for num in nums:
+        if num in seen:
+            return num
+
+        seen.add(num)
+
+    return -1
+
+
+
+n = int(input("Enter the number of inputs: "))
+
+nums = []
+for i in range(n):
+    nums.append(int(input("Enter: ")))
+
+res1 = first_repeating_brute(nums)
+res2 = first_repeating_fast(nums)
+
+print("Brute Force version: ", res1)
+print("Fast version: ", res2)
